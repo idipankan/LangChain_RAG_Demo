@@ -6,7 +6,7 @@ import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import sqlite3
 
-st.title('🦜🔗 Quickstart App')
+st.title('🦜🔗 LangChain RAG Demo App')
 
 #openai_api_key = st.sidebar.text_input('OpenAI API Key')
 
