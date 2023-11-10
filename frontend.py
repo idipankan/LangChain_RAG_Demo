@@ -7,7 +7,7 @@ st.title('🦜🔗 Quickstart App')
 
 openai_api_key = st.sidebar.text_input('OpenAI API Key')
 
-loader = TextLoader("Data/dump.txt")
+loader = TextLoader("dump.txt")
 data = loader.load()
 
 from langchain.text_splitter import RecursiveCharacterTextSplitter
