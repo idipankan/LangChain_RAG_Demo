@@ -8,7 +8,7 @@ import sqlite3
 
 st.title('🦜🔗 Quickstart App')
 
-openai_api_key = st.sidebar.text_input('OpenAI API Key')
+#openai_api_key = st.sidebar.text_input('OpenAI API Key')
 
 loader = TextLoader("dump.txt")
 data = loader.load()
@@ -39,10 +39,10 @@ def generate_response(input_text):
 with st.form('my_form'):
   text = st.text_area('Enter text:', 'Ask away...')
   submitted = st.form_submit_button('Submit')
-  if not openai_api_key.startswith('sk-'):
-    st.warning('Please enter your OpenAI API key!', icon='⚠')
-  if submitted and openai_api_key.startswith('sk-'):
-    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0,openai_api_key=openai_api_key)
+  # if not openai_api_key.startswith('sk-'):
+  #   st.warning('Please enter your OpenAI API key!', icon='⚠')
+  if submitted:
+    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
     # RetrievalQA
     qa_chain = RetrievalQA.from_chain_type(
         llm,
