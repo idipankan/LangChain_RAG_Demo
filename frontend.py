@@ -34,7 +34,8 @@ def getLLMResponse(query):
   return qa_chain({"query": query})
 
 def generate_response(input_text):
-  st.info(getLLMResponse(input_text))
+  result = getLLMResponse(input_text)
+  st.info(result['result'])
 
 with st.form('my_form'):
   text = st.text_area('Enter text:', 'Ask away...')
