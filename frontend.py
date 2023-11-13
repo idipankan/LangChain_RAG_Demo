@@ -35,7 +35,7 @@ llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
 qa_chain = RetrievalQA.from_chain_type(
         llm,
         retriever=vectorstore.as_retriever(),
-        chain_type_kwargs={"prompt": prompt}
+        chain_type_kwargs={"prompt": "Try to be succinct. If you do not know the answer to something, say that you do not have an answer. Ensure that you do not beat about the bush. Expand your reply with information from the outside world, wherever relevant."}
 )
 
 def getLLMResponse(query):
