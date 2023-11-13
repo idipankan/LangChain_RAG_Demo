@@ -30,6 +30,14 @@ prompt = hub.pull("rlm/rag-prompt")
 from langchain.chains import RetrievalQA
 from langchain.chat_models import ChatOpenAI
 
+llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
+# RetrievalQA
+qa_chain = RetrievalQA.from_chain_type(
+        llm,
+        retriever=vectorstore.as_retriever(),
+        chain_type_kwargs={"prompt": prompt}
+)
+
 def getLLMResponse(query):
   return qa_chain({"query": query})
 
@@ -43,11 +51,4 @@ with st.form('my_form'):
   # if not openai_api_key.startswith('sk-'):
   #   st.warning('Please enter your OpenAI API key!', icon='⚠')
   if submitted:
-    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
-    # RetrievalQA
-    qa_chain = RetrievalQA.from_chain_type(
-        llm,
-        retriever=vectorstore.as_retriever(),
-        chain_type_kwargs={"prompt": prompt}
-    )
     generate_response(text)
