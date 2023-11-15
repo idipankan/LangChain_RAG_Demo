@@ -8,8 +8,6 @@ import sqlite3
 
 st.title('LangChain RAG Demo App')
 
-#openai_api_key = st.sidebar.text_input('OpenAI API Key')
-
 loader = TextLoader("dump.txt")
 data = loader.load()
 
@@ -48,7 +46,5 @@ def generate_response(input_text):
 with st.form('my_form'):
   text = st.text_area('Enter text:', 'Ask away...')
   submitted = st.form_submit_button('Submit')
-  # if not openai_api_key.startswith('sk-'):
-  #   st.warning('Please enter your OpenAI API key!', icon='⚠')
   if submitted:
     generate_response(text)
